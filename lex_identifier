@@ -1,19 +1,25 @@
-lex code to determine whether input is an identifier or not
-% {
+//implement identifier and keywords
+%{
 #include <stdio.h>
-	%
+%}
+
+%%
+^[a-zA-Z_][a-zA-Z0-9_]* {
+    printf("Valid Identifier: %s\n", yytext);
+}
+if|else|while|int|float|char|return {
+    printf("Keyword: %s\n", yytext);
+}
+. {
+    printf("Invalid Input: %s\n", yytext);
+}
+%%
+
+int yywrap() {}
+
+int main() {
+    printf("Enter an identifier or keyword: ");
+    yylex();
+    return 0;
 }
 
-	/ rule section % %
-	// regex for valid identifiers
-	^[a - z A - Z _][a - z A - Z 0 - 9 _] * printf("Valid Identifier");
-
-// regex for invalid identifiers
-^[^a - z A - Z _] printf("Invalid Identifier");
-.;
-% %
-
-	main()
-{
-	yylex();
-}
