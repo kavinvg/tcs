@@ -1,19 +1,25 @@
 //To Implement LEX program of largest word.
 
-% {
-int counter = 0; %
+%{
+    int counter = 0;
+    char longest_word[100];  
+%}
+
+%% 
+[a-zA-Z]+ {
+    if (yyleng > counter)
+    {
+        counter = yyleng;
+        strncpy(longest_word, yytext, yyleng); 
+        longest_word[yyleng] = '\0';  
+    }
 }
 
-%
-% [a - zA - Z] + {
-if (yyleng > counter) {
-	counter = yyleng;
-}
-} %
-%
+%%
 
-main() {
-yylex();
-printf("largest: %d", counter);
-printf("\n");
-}
+int main()
+{
+    yylex();
+    printf("largest word: %s\n", longest_word);
+    printf("length of largest word: %d\n", counter);
+    return 0;
