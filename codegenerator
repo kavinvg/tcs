@@ -1,0 +1,33 @@
+class CodeGenerator:
+    def generate_code(self, expression):
+        operators = ['+', '-', '*', '/']
+        
+        # Removing all spaces from the expression
+        expression = expression.replace(' ', '')
+        
+        # Splitting the expression based on the arithmetic operators
+        for operator in operators:
+            if operator in expression:
+                operand1, operand2 = expression.split(operator)
+                break
+        else:
+            print("Unsupported operator or invalid expression format!")
+            return
+
+        if operator == '+':
+            return f'ADD {operand1}, {operand2}'
+        elif operator == '-':
+            return f'SUB {operand1}, {operand2}'
+        elif operator == '*':
+            return f'MUL {operand1}, {operand2}'
+        elif operator == '/':
+            return f'DIV {operand1}, {operand2}'
+
+# Taking user input for the expression
+expression = input("Enter an arithmetic expression (e.g., a + b * c): ")
+
+# Example usage:
+generator = CodeGenerator()
+machine_code = generator.generate_code(expression)
+if machine_code:
+    print("Generated Machine Code:", machine_code)
