@@ -1,0 +1,12 @@
+import re
+
+identifier_pattern = r'[a-zA-Z_]\w*'
+keyword_pattern = r'\b(if|else|while|for|def|import)\b'
+
+input_str = input("Enter the code: ")
+
+identifiers = re.findall(identifier_pattern, input_str)
+keywords = re.findall(keyword_pattern, input_str)
+
+print("Identifiers:", identifiers)
+print("Keywords:", keywords)
