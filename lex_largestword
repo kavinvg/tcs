@@ -1,4 +1,4 @@
-#To Implement LEX program of largest word.
+//To Implement LEX program of largest word.
 
 % {
 int counter = 0; %
