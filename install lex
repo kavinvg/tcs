@@ -1,0 +1,33 @@
+//install
+sudo apt-get update
+sudo apt-get install flex
+sudo apt-get install byacc
+sudo apt-get install bison
+sudo apt-get install bison++
+sudo apt-get install byacc-j
+
+lex De
+lex lex_primeno.l
+gcc lex.yy.c
+./a.out
+
+//create 
+cd desktop
+ls
+cd tcs
+ls
+vim lex_primeno 
+i
+copy file content
+esc :wq
+
+touch lex_primeno.l
+vim lex_primeno.l
+i
+paste file content
+esc :wq
+
+//run
+lex lex_primeno.l
+gcc lex.yy.c
+./a.out
