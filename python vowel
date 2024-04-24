@@ -1,0 +1,17 @@
+import re
+
+def lex(pattern):
+    tokens = []
+    
+    # Regular expression pattern to match vowels (both uppercase and lowercase)
+    vowel_pattern = r'[aeiouAEIOU]'
+    
+    for match in re.finditer(vowel_pattern, pattern):
+        vowel = match.group()
+        tokens.append(('VOWEL', vowel))
+    
+    return tokens
+
+ip = "The quick brown fox jumps over the lazy dog."
+op = lex(ip)
+print(op)
